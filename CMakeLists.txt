@@ -6,8 +6,9 @@ set(CMAKE_CXX_STANDARD 11)
 
 find_package( OpenCV REQUIRED )
 include_directories( ${OpenCV_INCLUDE_DIRS} )
-#message("OpenCV_INCLUDE_DIRS = "${OpenCV_INCLUDE_DIRS})
+message("OpenCV_INCLUDE_DIRS = "${OpenCV_INCLUDE_DIRS})
 
+message("OpenCV_LIBS = "${OpenCV_LIBS})
 add_executable(
     ${PROJECT_NAME}
     src/test_opencv.cpp
@@ -30,4 +31,5 @@ add_executable(
 )
 target_link_libraries(
         bit_image_test
-        ${OpenCV_LIBS} )
+        ${OpenCV_LIBS} 
+        )
