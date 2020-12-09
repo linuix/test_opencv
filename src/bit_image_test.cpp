@@ -26,45 +26,12 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
     LOGD("%s start -----------", argv[0]);
-    IplImage *pFrame = NULL;
-    cvNamedWindow("img", 1);
-    VideoCapture video_cp;
-    video_cp.open(-1);
-    if (video_cp.isOpened())
-    {
-        LOGD("ok");
-    }
+    Mat mat = imread("../img_file/camera3.png");
+//    namedWindow("img");
+    cvtColor(mat,mat,COLOR_BGR2GRAY);
+    imshow("img",mat);
+    waitKey(-1);
 
-    Mat cap;          //定义一个Mat变量，用于存储每一帧的图像
-    video_cp >> cap;  //读取当前帧
-    if (!cap.empty()) //判断当前帧是否捕捉成功 **这步很重要
-    {
-        imshow("img", cap); //若当前帧捕捉成功，显示
-
-        vector<int> compression_params;
-
-        compression_params.push_back(IMWRITE_PNG_COMPRESSION);
-        compression_params.push_back(9);
-        imwrite("img.png", cap, compression_params);
-    }
-    else
-        LOGD("error");
-    waitKey(5000); //延时10毫秒
-    // CvCapture *pCapture = cvCaptureFromCAM(0);
-    // cvSetCaptureProperty(pCapture, CV_CAP_PROP_FRAME_WIDTH, 320);
-    // cvSetCaptureProperty(pCapture, CV_CAP_PROP_FRAME_HEIGHT, 240);
-
-    // while (true)
-    // {
-    //     pFrame = cvQueryFrame(pCapture);
-    //     if (!pFrame)
-    //         break;
-
-    //     char c = cvWaitKey(33);
-    //     if (c == 32)
-    //         break;
-    //     cvShowImage("result", pFrame);
-    // }
 
     return 1;
 }
