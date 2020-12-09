@@ -33,3 +33,15 @@ target_link_libraries(
         bit_image_test
         ${OpenCV_LIBS} 
         )
+
+add_executable(
+        camera_test
+        src/camera_test.cpp
+)
+target_link_libraries(
+        camera_test
+        ${OpenCV_LIBS} 
+        )
+
+
+        
