@@ -29,9 +29,12 @@ int main(int argc, char const *argv[])
     Mat mat = imread("../img_file/camera3.png");
 //    namedWindow("img");
     cvtColor(mat,mat,COLOR_BGR2GRAY);
+
+    blur(mat,mat,Size(3,3));
+    //处理边缘显示
+    Canny(mat,mat,0,25,3);
     imshow("img",mat);
     waitKey(-1);
-
 
     return 1;
 }
